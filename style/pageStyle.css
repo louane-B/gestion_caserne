@@ -1,0 +1,5 @@
+/* mettre le contenu de la page a droite du menu */
+.contenu-page {
+    margin-left: 220px;
+    padding: 20px;
+}
