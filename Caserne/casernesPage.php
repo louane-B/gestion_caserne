@@ -26,6 +26,7 @@
                     <th>Province</th>
                     <th>code postal</th>
                     <th>Téléphone</th>
+                    <th>       </th>
                 </tr>
                     <?php
                         for($i=0;$i<count($tab);$i++){
@@ -36,15 +37,49 @@
                             echo "<td>" . $tab[$i]["province"] . "</td>";
                             echo "<td>" . $tab[$i]["code_postal"] . "</td>";
                             echo "<td>" . $tab[$i]["telephone"] . "</td>";
+                            echo "<td>"."</td>";
                         }
                     ?>
                 </tr>
             </table>
-            <input type="hidden" id="id_garderie" name="id_garderie">
+            <input type="hidden" id="id" name="id">
         </form>
         <br/>
         <br/>
         <br/>
+        <h1>Inscrire une nouvelle caserne</h1>
+        <form action="ajouterCaserne.php" method="POST">
+            <table>
+                <tr>
+                    <td> Nom :</td>
+                    <td><input type="text" name="nom" required></td>
+                </tr>
+                <tr>
+                    <td> Adresse : </td>
+                    <td><input type="text" name="adresse" require></td>
+                </tr>
+                <tr>
+                    <td> Ville : </td>
+                    <td><input type="text" name="ville" required></td>
+                </tr>
+                <tr>
+                    <td> Province : </td>
+                    <td><input type="text" name="province" required></td>
+                </tr>
+                <tr>
+                    <td> Code_postal : </td>
+                    <td><input type="text" name="code_postal" required></td>
+                </tr>
+                <tr>
+                    <td> telephone : </td>
+                    <td><input type="text" name="telephone" required></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="Inscription"></td>
+                </tr>
+            </table>
+        </form>
     </div>
 </body>
 </html>
