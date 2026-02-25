@@ -43,6 +43,8 @@
                             echo "<td>" . $tab[$i]["code_postal"] . "</td>";
                             echo "<td>" . $tab[$i]["telephone"] . "</td>";
                             echo '<td><input value="Modifier" type="Button" onclick="document.getElementById(\'id\').value=\'' . $tab[$i]["id"] . '\'; this.form.action = \'modification.php\'; this.form.method = \'POST\'; this.form.submit();"></td>';
+                            echo '<td><input value="Supprimer" type="button" onclick="if (confirm(\'Voulez-vous vraiment supprimer : ' . $tab[$i]["nom"].'?\')) {document.getElementById(\'id\').value = \'' . $tab[$i]["id"] . '\'; this.form.action =\'supprimerCaserne.php\'; this.form.method = \'POST\'; submit();}"></td>';
+                            echo "</tr>";
                         }
                     ?>
                 </tr>
