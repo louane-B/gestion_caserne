@@ -26,7 +26,12 @@
                     <th>Province</th>
                     <th>code postal</th>
                     <th>Téléphone</th>
-                    <th>       </th>
+                    <th>         </th>
+                    <th>
+                        <form action="viderListeCaserne.php" methode="POST">
+                            <input type="submit" value="vider">
+                        </form>
+                    </th>
                 </tr>
                     <?php
                         for($i=0;$i<count($tab);$i++){
@@ -37,7 +42,7 @@
                             echo "<td>" . $tab[$i]["province"] . "</td>";
                             echo "<td>" . $tab[$i]["code_postal"] . "</td>";
                             echo "<td>" . $tab[$i]["telephone"] . "</td>";
-                            echo "<td>"."</td>";
+                            echo '<td><input value="Modifier" type="Button" onclick="document.getElementById(\'id\').value=\'' . $tab[$i]["id"] . '\'; this.form.action = \'modification.php\'; this.form.method = \'POST\'; this.form.submit();"></td>';
                         }
                     ?>
                 </tr>
