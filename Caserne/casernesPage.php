@@ -7,7 +7,7 @@
     <title>casernes</title>
 </head>
 <body>
-     <?php
+    <?php
     include "../connexion.php";
     include "../menu.php";
 
@@ -26,6 +26,7 @@
                     <th>Province</th>
                     <th>code postal</th>
                     <th>Téléphone</th>
+                    <th>       </th>
                 </tr>
                     <?php
                         for($i=0;$i<count($tab);$i++){
@@ -36,15 +37,44 @@
                             echo "<td>" . $tab[$i]["province"] . "</td>";
                             echo "<td>" . $tab[$i]["code_postal"] . "</td>";
                             echo "<td>" . $tab[$i]["telephone"] . "</td>";
+                            echo "<td>"."</td>";
                         }
                     ?>
                 </tr>
             </table>
-            <input type="hidden" id="id_garderie" name="id_garderie">
+            <input type="hidden" id="id" name="id">
         </form>
         <br/>
         <br/>
         <br/>
+        <h1>Inscrire une nouvelle caserne</h1>
+        <form action="ajouterCaserne.php" method="POST" class="form-caserne">
+                <div class="form-group">
+                    <label> Nom :</label>
+                    <input type="text" name="nom" required>
+                </div>
+                <div class="form-group">
+                    <label> Adresse : </label>
+                    <input type="text" name="adresse" require>
+                </div>
+                <div class="form-group">
+                    <label> Ville : </label>
+                    <input type="text" name="ville" required>
+                </div>
+                <div class="form-group">
+                    <label> Province : </label>
+                    <input type="text" name="province" required>
+                </div>
+                <div class="form-group">
+                    <label> Code_postal : </label>
+                    <input type="text" name="code_postal" required>
+                </div>
+                <div class="form-group">
+                    <label> telephone : </label>
+                    <input type="text" name="telephone" required>
+                </div>
+                    <button type="submit" class="btn-submit">Inscription</button>
+        </form>
     </div>
 </body>
 </html>
