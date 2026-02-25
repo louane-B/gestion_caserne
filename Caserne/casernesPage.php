@@ -27,11 +27,7 @@
                     <th>code postal</th>
                     <th>Téléphone</th>
                     <th>         </th>
-                    <th>
-                        <form action="viderListeCaserne.php" methode="POST">
-                            <input type="submit" value="vider">
-                        </form>
-                    </th>
+                    <th>         </th>
                 </tr>
                     <?php
                         for($i=0;$i<count($tab);$i++){
@@ -50,6 +46,10 @@
                 </tr>
             </table>
             <input type="hidden" id="id" name="id">
+        </form>
+        <br/>
+        <form action="viderListeCaserne.php" method="POST">
+                <button type="submit" class="btn-submit">Vider</button>
         </form>
         <br/>
         <br/>
