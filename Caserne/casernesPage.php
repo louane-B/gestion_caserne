@@ -7,7 +7,7 @@
     <title>casernes</title>
 </head>
 <body>
-     <?php
+    <?php
     include "../connexion.php";
     include "../menu.php";
 
