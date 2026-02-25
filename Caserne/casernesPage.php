@@ -48,37 +48,32 @@
         <br/>
         <br/>
         <h1>Inscrire une nouvelle caserne</h1>
-        <form action="ajouterCaserne.php" method="POST">
-            <table>
-                <tr>
-                    <td> Nom :</td>
-                    <td><input type="text" name="nom" required></td>
-                </tr>
-                <tr>
-                    <td> Adresse : </td>
-                    <td><input type="text" name="adresse" require></td>
-                </tr>
-                <tr>
-                    <td> Ville : </td>
-                    <td><input type="text" name="ville" required></td>
-                </tr>
-                <tr>
-                    <td> Province : </td>
-                    <td><input type="text" name="province" required></td>
-                </tr>
-                <tr>
-                    <td> Code_postal : </td>
-                    <td><input type="text" name="code_postal" required></td>
-                </tr>
-                <tr>
-                    <td> telephone : </td>
-                    <td><input type="text" name="telephone" required></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td><input type="submit" value="Inscription"></td>
-                </tr>
-            </table>
+        <form action="ajouterCaserne.php" method="POST" class="form-caserne">
+                <div class="form-group">
+                    <label> Nom :</label>
+                    <input type="text" name="nom" required>
+                </div>
+                <div class="form-group">
+                    <label> Adresse : </label>
+                    <input type="text" name="adresse" require>
+                </div>
+                <div class="form-group">
+                    <label> Ville : </label>
+                    <input type="text" name="ville" required>
+                </div>
+                <div class="form-group">
+                    <label> Province : </label>
+                    <input type="text" name="province" required>
+                </div>
+                <div class="form-group">
+                    <label> Code_postal : </label>
+                    <input type="text" name="code_postal" required>
+                </div>
+                <div class="form-group">
+                    <label> telephone : </label>
+                    <input type="text" name="telephone" required>
+                </div>
+                    <button type="submit" class="btn-submit">Inscription</button>
         </form>
     </div>
 </body>
