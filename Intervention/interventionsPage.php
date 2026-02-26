@@ -11,36 +11,47 @@
     include "../connexion.php";
     include "../menu.php";
 
-    $req = $pdo->prepare("SELECT i.id, i.adresse, i.dateTime, i.type_intervention, c.nom FROM intervention i Join caserne c ON i.id_caserne = c.id ORDER BY id;");
+    $req = $pdo->prepare("SELECT i.id, i.adresse, i.dateTime, i.type_intervention, c.nom FROM intervention i Join caserne c ON i.id_caserne = c.id ORDER BY c.nom, i.datetime ;");
     $req->execute();
     $tab = $req->fetchAll(PDO::FETCH_ASSOC);
+
+    $caserneActuelle = "";
     ?>
 
     <div class="contenu-page">
-        <h1>La liste des Interventions de chaque caserne</h1>
+        <h1>Les Interventions par caserne</h1>
+
         <form method="POST">
-            <table>
+            <?php foreach ($tab as $row): ?>
+                <?php if ($caserneActuelle != $row["nom"]): ?>
+                    <?php
+                        if ($caserneActuelle != $row["nom"]){
+                            echo "</table><br>";
+                        }
+                        $caserneActuelle = $row["nom"];
+                        echo "<h2>Caserne : " . $caserneActuelle . "</h2>";
+                        echo "<table>";
+                        echo "<tr>
+                                <th>Adresse</th>
+                                <th>Date et Heure</th>
+                                <th>Type d'intervention</th>
+                            </tr>";
+                    ?>
+                <?php endif; ?>
                 <tr>
-                    <th>Adresse</th>
-                    <th>dateTime</th>
-                    <th>type_intervention</th>
-                    <th>Caserne</th>
+                    <td><?= $row["adresse"] ?></td>
+                    <td><?= $row["dateTime"] ?></td>
+                    <td><?= $row["type_intervention"] ?></td>
                 </tr>
-                <tr>
+            <?php endforeach; ?>
                 <?php
-                    for($i=0;$i<count($tab);$i++){
-                        echo "<tr>";
-                        echo "<td>" . $tab[$i]["adresse"] . "</td>";
-                        echo "<td>" . $tab[$i]["dateTime"] . "</td>";
-                        echo "<td>" . $tab[$i]["type_intervention"] . "</td>";
-                        echo "<td>" . $tab[$i]["nom"] . "</td>";
-                        echo "</tr>";
-                    }
+                if ($caserneActuelle != "") {
+                    echo "</table>";
+                }
                 ?>
-                </tr>
-            </table>
             <input type="hidden" id="id" name="id_intervention">
         </form>
         <br>
+    </div>
 </body>
 </html>
