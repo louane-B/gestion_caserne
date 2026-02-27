@@ -35,7 +35,8 @@
                                 <th>Adresse</th>
                                 <th>Date et Heure</th>
                                 <th>Type d'intervention</th>
-                                <th>                </th>
+                                <th> </th>
+                                <th> </th>
                             </tr>";
                     ?>
                 <?php endif; ?>
@@ -43,6 +44,18 @@
                     <td><?= $row["adresse"] ?></td>
                     <td><?= $row["dateTime"] ?></td>
                     <td><?= $row["type_intervention"] ?></td>
+                    <td>
+                        <input 
+                            type="Button"
+                            value="Modifier" 
+                            onclick="
+                                document.getElementById('id_intervention').value='<?= $row['id'] ?>';
+                                this.form.action = 'interventionModifPage.php'; 
+                                this.form.method = 'POST'; 
+                                this.form.submit();
+                            "
+                        >
+                    </td>
                     <td>
                         <input 
                             type="button"
