@@ -67,9 +67,42 @@
             ?>
             <input type="hidden" id="id_intervention" name="id_intervention">
         </form>
-        <br>
+        <br/>
         <form action="viderListeIntervention.php" method="POST">
                 <button type="submit" class="btn-submit">Vider</button>
+        </form>
+        <br/>
+        <br/>
+        <br/>
+        <h1>Inscrire l'intervention d'une caserne</h1>
+        <form action="ajouterIntervention.php" method="POST" class="form-caserne">
+            <div class="form-group">
+                <label> Adresse :</label>
+                <input type="text" name="adresse" required>
+            </div>
+            <!-- le type: datetime-local permet de faire apparaitre un calendrier et un espace pour indiquer l'heure dans le formulaire !-->
+             <!-- la date et l'heure seront envoyer dans la base MySQL dans le bon format !-->
+            <div class="form-group">
+                <label> Date et Heure :</label>
+                <input type="datetime-local" name="dateTime" required>
+            </div>
+            <div class="form-group">
+                <label> Type d'intervention :</label>
+                <input type="text" name="type_intervention" required>
+            </div>
+            <div class="form-group">
+                <label> Nom de la Caserne :</label>
+                <select name="id_caserne" required>
+                    <option value="">---- Choisir une caserne --</option>
+                    <?php
+                        $req = $pdo->query("SELECT id, nom FROM caserne ORDER BY nom;");
+                        while ($c = $req->fetch()) {
+                            echo "<option value='{$c['id']}'>{$c['nom']}</option>";
+                        }
+                    ?>
+                </select>
+            </div>
+                <button type="submit" class="btn-submit"> Ajouter l'intervention</button>
         </form>
     </div>
 </body>
