@@ -25,7 +25,7 @@
 
     <div class="contenu-page">
         <h1>Modifier une intervention</h1>
-
+        <!-- formulaire de modification -->
         <form action="modifIntervention.php" method="POST" class="form-caserne">
 
             <input type="hidden" name="id_intervention" value ="<?= $intervention['id'] ?>">
@@ -45,6 +45,7 @@
                 <input type="text" name="type_intervention" value="<?= $intervention['type_intervention'] ?>" required>
             </div>
 
+            <!-- la liste déroulante -->
             <div class="form-group">
                 <label>Nom de la Caserne</label>
                 <select name="id_caserne" required>

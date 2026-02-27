@@ -15,6 +15,7 @@
     $req->execute([$id]);
     $caserne = $req->fetch(PDO::FETCH_ASSOC);
     ?>
+    <!-- formulaire de modification le value="<?= $caserne[' '] ?>" permet de récuppérer les données qui correspond a la caserne sélectionner -->
     <div class="contenu-page">
         <h1>Modifier la caserne</h1>
 

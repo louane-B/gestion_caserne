@@ -11,10 +11,13 @@
     include "../connexion.php";
     include "../menu.php";
 
+    # commande sql pour afficher les données de la table intervention
+    # Joindre id_caserne a l'id de la table caserne pour pouvoir afficher le nom de la caserne 
     $req = $pdo->prepare("SELECT i.id, i.adresse, i.dateTime, i.type_intervention, c.nom FROM intervention i Join caserne c ON i.id_caserne = c.id ORDER BY c.nom, i.datetime ;");
     $req->execute();
     $tab = $req->fetchAll(PDO::FETCH_ASSOC);
 
+    # la données de base de la caserne actuelle
     $caserneActuelle = "";
     ?>
 
@@ -23,14 +26,19 @@
 
         <form method="POST">
             <?php foreach ($tab as $row): ?>
+                <!-- se if permet d'indiquer dans qu'elle caserne on se trouve, -->
+                 <!-- vérifie si le nom qui est relier a l'id_caserne de l'intervention correspond au nom de la caserne actuelle -->
                 <?php if ($caserneActuelle != $row["nom"]): ?>
                     <?php
+                        # une boucle if qui vérifie si l'intervention est dans la même caserne ou nom sinon elle ferme le tableau
                         if ($caserneActuelle != ""){
                             echo "</table><br>";
                         }
+                        #le nom de chaque caserne
                         $caserneActuelle = $row["nom"];
                         echo "<h2>Caserne : " . $caserneActuelle . "</h2>";
                         echo "<table>";
+                        #les titre du tableau
                         echo "<tr>
                                 <th>Adresse</th>
                                 <th>Date et Heure</th>
@@ -44,19 +52,22 @@
                     <td><?= $row["adresse"] ?></td>
                     <td><?= $row["dateTime"] ?></td>
                     <td><?= $row["type_intervention"] ?></td>
+                    <!-- bouton modifier -->
                     <td>
                         <input 
                             type="Button"
                             value="Modifier" 
                             onclick="
-                                document.getElementById('id_intervention').value='<?= $row['id'] ?>';
+                                document.getElementById('id_intervention').value='<?= $row['id'] ?>'; 
                                 this.form.action = 'interventionModifPage.php'; 
                                 this.form.method = 'POST'; 
                                 this.form.submit();
-                            "
+                            " 
                         >
+                        <!-- la ligne document.getElementById('id_intervention').value='<?= $row['id'] ?>'; permet de récupérer l'id de l'intervention concernée -->
                     </td>
                     <td>
+                        <!-- bouton supprimer avec un lien vers le fichier action supprimerIntervention qui récupére l'id liée -->
                         <input 
                             type="button"
                             value="Supprimer" 
@@ -103,6 +114,7 @@
                 <label> Type d'intervention :</label>
                 <input type="text" name="type_intervention" required>
             </div>
+            <!-- la liste déroulante en utilisant le select dans la base de données -->
             <div class="form-group">
                 <label> Nom de la Caserne :</label>
                 <select name="id_caserne" required>
@@ -110,11 +122,13 @@
                     <?php
                         $req = $pdo->query("SELECT id, nom FROM caserne ORDER BY nom;");
                         while ($c = $req->fetch()) {
+                            # Récupération de l'idée de la caserne + Afficher dans la liste le nom qui correspond
                             echo "<option value='{$c['id']}'>{$c['nom']}</option>";
                         }
                     ?>
                 </select>
             </div>
+                    <!-- le bouton pour soumettre l'ajout -->
                 <button type="submit" class="btn-submit"> Ajouter l'intervention</button>
         </form>
     </div>
