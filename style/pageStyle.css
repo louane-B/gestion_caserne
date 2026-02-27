@@ -94,9 +94,10 @@ tr:hover {
 }
 
 /* ------------------------------------------------- */
-/* Formulaire CASERNE                                */
+/* Formulaire CASERNE et INTERVENTION                */
 /* ------------------------------------------------- */
 
+/* le cadre du formulaire */
 .form-caserne {
     max-width: 500px;
     background-color: white;
@@ -106,28 +107,33 @@ tr:hover {
     margin-top: 20px;
 }
 
+/* englobe le label et le input du formulaire */
 .form-group {
     margin-bottom: 15px;
 }
 
+
 .form-group label {
     display: block;
-    font-weight: bold;
+    font-weight: bold; /* rend le texte en gras */
     margin-bottom: 5px;
 }
 
+/* la case du input */
 .form-group input {
     width: 100%;
     padding: 10px;
-    border: 1px solid #bbb;
+    border: 1px solid #bbb; 
     border-radius: 4px;
 }
 
+/* quand on clique sur la case du input les contour devienne bleu */
 .form-group input:focus {
     border-color: #0066CC;
     outline: none;
 }
 
+/* le bouton du formulaire */
 .btn-submit {
     background-color: #0066cc;
     color: white;
@@ -138,6 +144,7 @@ tr:hover {
     font-size: 16px;
 }
 
+/* quand la souris se mets sur le bouton il devient plus foncé */
 .btn-submit:hover {
     background-color: #004c99;
 }
