@@ -25,7 +25,7 @@
             <?php foreach ($tab as $row): ?>
                 <?php if ($caserneActuelle != $row["nom"]): ?>
                     <?php
-                        if ($caserneActuelle != $row["nom"]){
+                        if ($caserneActuelle != ""){
                             echo "</table><br>";
                         }
                         $caserneActuelle = $row["nom"];
@@ -35,6 +35,7 @@
                                 <th>Adresse</th>
                                 <th>Date et Heure</th>
                                 <th>Type d'intervention</th>
+                                <th>                </th>
                             </tr>";
                     ?>
                 <?php endif; ?>
@@ -42,14 +43,29 @@
                     <td><?= $row["adresse"] ?></td>
                     <td><?= $row["dateTime"] ?></td>
                     <td><?= $row["type_intervention"] ?></td>
+                    <td>
+                        <input 
+                            type="button"
+                            value="Supprimer" 
+                            onclick="
+                                if (confirm('Voulez-vous vraiment supprimer : l\'intervention <?= $row['type_intervention'] ?> du <?= $row['dateTime'] ?> de la <?= $row['nom'] ?> ?')) {
+                                    document.getElementById('id_intervention').value = '<?= $row['id'] ?>';
+                                    this.form.action = 'supprimerIntervention.php';
+                                    this.form.method = 'POST';
+                                    this.form.submit();
+                                }
+                            "
+                        >
+                    </td>
                 </tr>
             <?php endforeach; ?>
-                <?php
-                if ($caserneActuelle != "") {
+
+            <?php
+            if ($caserneActuelle != "") {
                     echo "</table>";
                 }
-                ?>
-            <input type="hidden" id="id" name="id_intervention">
+            ?>
+            <input type="hidden" id="id_intervention" name="id_intervention">
         </form>
         <br>
     </div>
