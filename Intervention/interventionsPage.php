@@ -68,6 +68,9 @@
             <input type="hidden" id="id_intervention" name="id_intervention">
         </form>
         <br>
+        <form action="viderListeIntervention.php" method="POST">
+                <button type="submit" class="btn-submit">Vider</button>
+        </form>
     </div>
 </body>
 </html>
