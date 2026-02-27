@@ -50,7 +50,7 @@
                             value="Modifier" 
                             onclick="
                                 document.getElementById('id_intervention').value='<?= $row['id'] ?>';
-                                this.form.action = 'modification.php'; 
+                                this.form.action = 'interventionModifPage.php'; 
                                 this.form.method = 'POST'; 
                                 this.form.submit();
                             "
